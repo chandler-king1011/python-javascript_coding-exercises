@@ -108,3 +108,63 @@ def common_elements(list_one, list_two):
     return sorted(common_list)
 
 print(common_elements([1, 2, 3, 4, 5], [2, 5, 6, 1, 8, 5]))
+
+
+
+# Most Frequent Element in Given Array
+
+def most_frequent(arr):
+    tracker = {}
+    output = 0
+
+    for el in arr:
+        if(el in tracker.keys()):
+            tracker[el] += 1
+        else:
+            tracker[el] = 1
+        if (tracker[el] > output):
+            output = el
+    return output        
+
+print(most_frequent([1, 2, 2, 3, 5, 5, 5]))
+
+
+# Given a string are all the characters unique T/F?
+
+def all_unique(string):
+    string = string.replace(' ', '')
+    tracker = set()
+    duplicate = False
+    for num in range(len(string)):
+        if string[num] in tracker:
+            duplicate = True
+        else:
+            tracker.add(string[num])
+    if duplicate == True:
+        return False
+    else:
+        return True
+
+
+print(all_unique("a cee w jf"))
+
+
+# non repeat element. Take a string and return non repeating characters.
+
+def no_repeat(string):
+    string = string.replace(" ", "").lower()
+    duplicates = []
+    result = []
+    for letter in string:
+        if letter in result:
+            duplicates.append(letter)
+            result.remove(letter)
+        elif letter not in duplicates:
+            result.append(letter)
+
+    return result
+
+
+print(no_repeat("a d b e c e d "))
+
+    

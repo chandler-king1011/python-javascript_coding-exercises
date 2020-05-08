@@ -113,3 +113,71 @@ const commonElements = (arrOne, arrTwo) => {
     return commonArr.sort();
 }
 console.log(commonElements([1, 2, 3, 4, 5], [3, 5, 6, 7, 5, 1]));
+
+
+// given an arr return the most frequently occurring item
+
+const mostFrequent = (arr) => {
+    let tracker = {};
+    let output = 0;
+    arr.forEach(el => {
+        if(tracker[el] == null) {
+            tracker[el] = 1;
+        } else {
+            tracker[el] += 1;
+        }
+        if (tracker[el] > output) {
+            output = el;
+        }
+    })
+    return output;
+}
+
+console.log(mostFrequent([1, 1, 2, 2, 1, 2, 2, 7, 10, 1, 2, 15]));
+
+// Given a string are all the characters unique T/F?
+
+const all_unique = (str) => {
+    const newStr = str.split(" ").join("").toLowerCase();
+    let characters = [];
+
+    for (i=0; i < newStr.length + 1; i++) {
+        if (characters.includes(newStr[i])) {
+            return false;
+        } else {
+            characters.push(newStr[i]);
+        }
+    }
+    return true;
+}
+
+console.log(all_unique("hi there"));
+
+
+// non repeat element. Take a string and return non repeating characters.
+
+const noRepeat = (str) => {
+    let tracker = {};
+    let result = [];
+    let newStr = str.split(" ").join("").toLowerCase();
+   
+
+    for(i=0; i < newStr.length + 1; i++) {
+        if (tracker[newStr[i]] != null) {
+            tracker[newStr[i]] += 1;
+        } else {
+            tracker[newStr[i]] = 1;
+        }
+    }
+
+
+    newStr.split("").forEach(letter => {
+        if (tracker[letter] == 1) {
+            result.push(letter);
+        }
+    })
+
+    return result;
+}
+
+console.log(noRepeat("hi ther"));
